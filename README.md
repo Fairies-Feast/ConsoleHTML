@@ -8,3 +8,4 @@ snapshot = Snapshot(encoded) # Creates a non-interactive browser interface
 print("The output of the code you put in is:")
 snapshot.view(lambda x: print("Image: "+x)) # Display the image with the text 'Image: ' in front.
 ```
+Working on adding an interactive browser interface!
