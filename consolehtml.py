@@ -1,21 +1,18 @@
 # ConsoleHTML | Free to use for personal and commercial use, just give credit to Amsilla.com
-# You need to install these packages: art, colorama, readchar
+# You need to install these packages: art, colorama, bs4
 import art
 import colorama
-from readchar import readkey, key
+from bs4 import BeautifulSoup
 
 def clear():
     print("\033[H\033[2J", end="", flush=True)
-def encode(htmls): # Assuming there are spaces between attributes
-    # Return ['tagname', 'tagcontent', 'tagattribute#1', 'tagattribute#2']
-  tagname = "p"
-  if htmls.startswith("<!--") and htmls.endswith("-->"):
-    tagname = "COMMENT"
-  elif " " in htmls and "<" in htmls:
-    tagname = htmls.split(" ")[0].replace("<", "")
-  elif ">" in htmls:
-    tagname = htmls.split(">")[0].replace("<","")
-  return [tagname]
+def encode(html_tag):
+    soup = BeautifulSoup(html_tag, 'html.parser')
+    tag = soup.find()
+    tag_name = tag.name
+    content = tag.text
+    attributes = [f"{attr}={value}" for attr, value in tag.attrs.items()]
+    return [tag_name, content, *attributes]
 class Snapshot:
     def __init__(self, skeleton):
         self.data = "HTML.tag."+skeleton[0]+"!!" + skeleton[1]
