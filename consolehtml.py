@@ -4,8 +4,6 @@ import art
 import colorama
 from bs4 import BeautifulSoup
 
-def clear():
-    print("\033[H\033[2J", end="", flush=True)
 def encode(html_tag):
     soup = BeautifulSoup(html_tag, 'html.parser')
     tag = soup.find()
