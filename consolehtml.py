@@ -6,8 +6,8 @@ from readchar import readkey, key
 
 def clear():
     print("\033[H\033[2J", end="", flush=True)
-
 def encode(htmls): # Assuming there are spaces between attributes
+    # Return ['tagname', 'tagcontent', 'tagattribute#1', 'tagattribute#2']
   tagname = "p"
   if htmls.startswith("<!--") and htmls.endswith("-->"):
     tagname = "COMMENT"
@@ -16,3 +16,6 @@ def encode(htmls): # Assuming there are spaces between attributes
   elif ">" in htmls:
     tagname = htmls.split(">")[0].replace("<","")
   return [tagname]
+class Snapshot:
+    def __init__(self, skeleton):
+        self.data = "HTML.tag."+skeleton[0]+"!!" + skeleton[1]
