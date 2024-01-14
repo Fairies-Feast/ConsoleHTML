@@ -17,5 +17,6 @@ interface.moveMouseTo(1,1) # 1 is about equal to the size of "A"
 interface.click() # or
 interface.rightclick() # or
 interface.middleclick()
+interface.keyPress("capslock")
 interface.keyPress("shift pagedown")
 ```
